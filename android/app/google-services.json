@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1036551375610",
+    "project_id": "territory-capture",
+    "storage_bucket": "territory-capture.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1036551375610:android:da9d5b557e03e7c05bd743",
+        "android_client_info": {
+          "package_name": "com.territorycapture.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCn7PkpxhLwrKiDkNQfqnivFT0SAIm6Gvw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

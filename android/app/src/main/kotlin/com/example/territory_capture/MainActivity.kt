@@ -1,4 +1,4 @@
-package com.example.territory_capture
+package com.territorycapture.app
 
 import io.flutter.embedding.android.FlutterActivity
 
