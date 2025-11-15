@@ -102,6 +102,20 @@ Each feature is isolated inside its own module (e.g., `features/auth`, `features
 
 ```
 lib/
+├── core/
+│   ├── constants/
+│   ├── theme/
+│   ├── utils/
+│   ├── components/
+│   └── splash/
+│   └── usecase/
+│   └── extension/
+│   └── errors/
+│
+├── routes/
+│   ├── app_pages.dart
+│   └── app_routes.dart
+|
 └── features/
     └── auth/
         ├── data/
