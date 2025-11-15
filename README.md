@@ -4,7 +4,8 @@ A Flutter application for recording GPS paths, generating polygons, calculating 
 
 This project demonstrates industry-standard architecture, real-time location tracking, Firestore security, and professional coding practices.
 
-# Features
+## Features
+
 - Live GPS tracking (1–3 meters accuracy)
 - Polyline drawing & polygon generation
 - Automatic area calculation
@@ -15,41 +16,53 @@ This project demonstrates industry-standard architecture, real-time location tra
 - GetX for state management & dependency injection
 - Google Maps integration
 
-# Setup Instructions
+## Setup Instructions
 
-1. Clone the Repository
+### 1. Clone the Repository
+
+```bash
 git clone https://github.com/anand-a-j/territory-capture.git
 cd territory-capture
+```
 
-2. Install Dependencies
+### 2. Install Dependencies
+
 This project requires Flutter 3.35.1.
+
+```bash
 flutter pub get
+```
 
-# Firebase Setup (Short Version)
+## Firebase Setup (Short Version)
 
-Create a Firebase project:
-https://console.firebase.google.com
+1. **Create a Firebase project:**
+   - Visit https://console.firebase.google.com
 
-Add an Android app with this package name:
+2. **Add an Android app** with this package name:
+   ```
+   com.territorycapture.app
+   ```
 
-com.territorycapture.app
+3. **Generate SHA keys:**
+   ```bash
+   ./gradlew signingReport
+   ```
 
-Generate SHA keys:
-./gradlew signingReport
+4. **Add SHA-1 and SHA-256** under:
+   - Project Settings → Android App → SHA fingerprints
 
+5. **Download `google-services.json`** and place it in:
+   ```
+   android/app/google-services.json
+   ```
 
-Add SHA-1 and SHA-256 under
-Project Settings → Android App → SHA fingerprints.
+6. **Enable Firebase services:**
+   - Authentication → Google Sign-In
+   - Firestore Database → Production mode
 
-Download google-services.json and place it in:
-android/app/google-services.json
+7. **Add Firestore rules:**
 
-
-Enable Firebase services:
-Authentication → Google Sign-In
-Firestore Database → Production mode
-
-Add Firestore rules:
+```javascript
 rules_version = '3';
 service cloud.firestore {
   match /databases/{database}/documents {
@@ -61,65 +74,72 @@ service cloud.firestore {
     }
   }
 }
+```
 
-# Google Maps Setup (Short Version)
+## Google Maps Setup (Short Version)
 
-Go to Google Cloud Console
-Enable the following APIs:
-Maps SDK for Android
-(Optional) Geocoding API
-Create an API key
-Add to AndroidManifest.xml:
+1. Go to [Google Cloud Console](https://console.cloud.google.com)
 
+2. **Enable the following APIs:**
+   - Maps SDK for Android
+   - (Optional) Geocoding API
+
+3. **Create an API key**
+
+4. **Add to `AndroidManifest.xml`:**
+
+```xml
 <meta-data
   android:name="com.google.android.geo.API_KEY"
   android:value="YOUR_API_KEY"/>
+```
 
-
-# Architecture Notes (Clean Architecture + GetX)
+## Architecture Notes (Clean Architecture + GetX)
 
 This project follows Clean Architecture with strict separation of layers and responsibilities.
-Each feature is isolated inside its own module (ex: features/auth, features/territory), following a scalable, maintainable structure.
 
+Each feature is isolated inside its own module (e.g., `features/auth`, `features/territory`), following a scalable, maintainable structure.
+
+```
 lib/
- └── features/
-      └── auth/
-           ├── data/
-           │    ├── datasources/
-           │    │     └── auth_remote.dart
-           │    ├── models/
-           │    │     └── user_dto.dart
-           │    └── repositories/
-           │          └── auth_repo_impl.dart
-           │
-           ├── domain/
-           │    ├── entities/
-           │    │     └── user_entity.dart
-           │    ├── repositories/
-           │    │     └── auth_repo.dart
-           │    └── usecases/
-           │          └── google_sign_in_usecase.dart
-           │
-           └── presentation/
-                ├── bindings/
-                │     └── auth_binding.dart
-                ├── controllers/
-                │     └── auth_controller.dart
-                ├── screens/
-                │     └── sign_in_page.dart
-                └── widgets/
-                      └── sign_in_button.dart
+└── features/
+    └── auth/
+        ├── data/
+        │   ├── datasources/
+        │   │   └── auth_remote.dart
+        │   ├── models/
+        │   │   └── user_dto.dart
+        │   └── repositories/
+        │       └── auth_repo_impl.dart
+        │
+        ├── domain/
+        │   ├── entities/
+        │   │   └── user_entity.dart
+        │   ├── repositories/
+        │   │   └── auth_repo.dart
+        │   └── usecases/
+        │       └── google_sign_in_usecase.dart
+        │
+        └── presentation/
+            ├── bindings/
+            │   └── auth_binding.dart
+            ├── controllers/
+            │   └── auth_controller.dart
+            ├── screens/
+            │   └── sign_in_page.dart
+            └── widgets/
+                └── sign_in_button.dart
+```
 
-
-# Why GetX?
+## Why GetX?
 
 - Clean dependency injection (Bindings)
 - Lightweight state management
 - Simple route management
 - Great for feature-based clean architecture
 - Zero boilerplate
- 
-# Benefits of This Architecture
+
+## Benefits of This Architecture
 
 - Scalable for large production apps
 - Easy to test business logic
@@ -127,6 +147,13 @@ lib/
 - Clear boundaries between layers
 - Each feature is isolated and modular
 
+## License
+
+MIT License - feel free to use this project for learning and production.
+
+## Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
 
 
