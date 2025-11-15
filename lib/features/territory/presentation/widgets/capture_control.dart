@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:territory_capture/core/extension/common.dart';
 import 'package:territory_capture/features/territory/presentation/widgets/capture_button.dart';
 
 import '../../../../core/constants/app_constants.dart';
@@ -14,21 +13,16 @@ class CaptureControl extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.find<MapCaptureController>();
 
-    return Container(
-      padding: const EdgeInsets.all(AppConsts.pMedium),
-        decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(AppConsts.rCircle),
-        color: context.onPrimary,
-        border: Border.all(width: 0.9, color: context.surface),
-      ),
+    return Padding(
+      padding: const EdgeInsets.all(AppConsts.pSide),
       child: Obx(() {
         final status = controller.status.value;
-      
+
         return AnimatedSwitcher(
           duration: const Duration(milliseconds: 300),
           switchInCurve: Curves.easeOut,
           switchOutCurve: Curves.easeIn,
-          
+
           transitionBuilder: (child, animation) {
             return SlideTransition(
               position: Tween<Offset>(
@@ -38,21 +32,23 @@ class CaptureControl extends StatelessWidget {
               child: FadeTransition(opacity: animation, child: child),
             );
           },
-      
+
           child: switch (status) {
-            TerritoryStatus.idle => Row(
+            TerritoryStatus.idle ||
+            TerritoryStatus.finished ||
+            TerritoryStatus.discarded => Row(
               key: const ValueKey("idle"),
               children: [
                 Expanded(
                   child: CaptureButton(
                     title: "Start",
                     color: Colors.green,
-                    onTap: controller.startRecording, 
+                    onTap: controller.startRecording,
                   ),
                 ),
               ],
             ),
-      
+
             // --------------------------------------------------
             TerritoryStatus.recording => Row(
               key: const ValueKey("recording"),
@@ -70,7 +66,7 @@ class CaptureControl extends StatelessWidget {
                     title: "Finish",
                     color: Colors.blue,
                     onTap: () async {
-                     await controller.completeAndSave();
+                      await controller.completeAndSave();
                     },
                   ),
                 ),
@@ -84,7 +80,7 @@ class CaptureControl extends StatelessWidget {
                 ),
               ],
             ),
-      
+
             // --------------------------------------------------
             TerritoryStatus.paused => Row(
               key: const ValueKey("paused"),
@@ -102,7 +98,6 @@ class CaptureControl extends StatelessWidget {
                     title: "Finish",
                     color: Colors.blue,
                     onTap: () async {
-                 
                       await controller.completeAndSave();
                     },
                   ),
@@ -117,9 +112,6 @@ class CaptureControl extends StatelessWidget {
                 ),
               ],
             ),
-      
-            TerritoryStatus.finished ||
-            TerritoryStatus.discarded => const SizedBox.shrink(),
           },
         );
       }),

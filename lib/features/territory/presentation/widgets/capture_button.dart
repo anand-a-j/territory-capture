@@ -19,7 +19,7 @@ class CaptureButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 43,
+        height: 48,
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(AppConsts.rCircle),

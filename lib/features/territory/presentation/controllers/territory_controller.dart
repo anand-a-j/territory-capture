@@ -19,15 +19,10 @@ class TerritoryController extends GetxController {
   final RxBool isLoading = false.obs;
   final RxBool isDeleting = false.obs;
 
-  /// 🔥 Only this is used for error handling
   final RxString errorMessage = "".obs;
 
-  /// List of territories
   final RxList<TerritoryEntity> territories = <TerritoryEntity>[].obs;
 
-  // ---------------------------------------------------------------------------
-  // LOAD TERRITORIES
-  // ---------------------------------------------------------------------------
   Future<void> loadTerritories(String userId) async {
     isLoading.value = true;
     errorMessage.value = "";

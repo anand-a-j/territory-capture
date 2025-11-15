@@ -41,7 +41,6 @@ class AuthRemoteDataSource {
         idToken: googleAuth.idToken,
       );
 
-      /// Step 4: Firebase sign-in
       final userCred = await _auth.signInWithCredential(credential);
 
       return userCred;

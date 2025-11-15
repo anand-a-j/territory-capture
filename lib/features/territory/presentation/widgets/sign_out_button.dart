@@ -21,11 +21,11 @@ class SignOutButton extends StatelessWidget {
         },
         child: Container(
           height: 42,
-          padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 6),
+          padding: const EdgeInsets.symmetric(horizontal: 12),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppConsts.rCircle),
-            color: context.onPrimary,
-            border: Border.all(width: 0.9, color: context.surface),
+            color: context.error.withValues(alpha: 0.4),
+            border: Border.all(width: 0.9, color: context.error),
           ),
           child: Center(
             child: Icon(Icons.logout_outlined, color: context.error),

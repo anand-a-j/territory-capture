@@ -10,6 +10,7 @@ class AppThemes with AppColorScheme {
       primary: AppColorScheme.primary,
       onPrimary: AppColorScheme.onPrimary,
       secondary: AppColorScheme.secondary,
+      primaryContainer: AppColorScheme.primaryContainer,
       error: AppColorScheme.error,
     ),
     textTheme: const TextTheme(
@@ -74,7 +75,7 @@ class AppThemes with AppColorScheme {
         color: AppColorScheme.onPrimary,
       ),
     ),
-   
+
     iconTheme: const IconThemeData(
       color: AppColorScheme.onPrimary,
       weight: 100,

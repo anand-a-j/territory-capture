@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:territory_capture/core/extension/common.dart';
 import 'package:territory_capture/features/territory/domain/entities/territory_entity.dart';
 
-import '../../../../core/constants/constants.dart';
+import '../../../../core/constants/app_constants.dart';
 import '../../../../core/utils/format_utils.dart';
 
 class TerritoryDetailsCard extends StatelessWidget {
@@ -21,6 +21,8 @@ class TerritoryDetailsCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(AppConsts.pSide),
         child: Column(
+
+          mainAxisSize: MainAxisSize.min,
           spacing: 14,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

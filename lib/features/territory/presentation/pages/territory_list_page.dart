@@ -1,11 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:territory_capture/core/components/core_components.dart';
-import 'package:territory_capture/core/constants/constants.dart';
 import 'package:territory_capture/core/extension/common.dart';
 import 'package:territory_capture/features/territory/presentation/widgets/territory_card.dart';
 
+import '../../../../core/components/custom_appbar.dart';
+import '../../../../core/constants/app_constants.dart';
 import '../controllers/territory_controller.dart';
 
 class TerritoryListPage extends StatelessWidget {

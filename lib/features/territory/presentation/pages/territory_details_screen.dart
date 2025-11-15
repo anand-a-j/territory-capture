@@ -5,7 +5,8 @@ import 'package:territory_capture/core/utils/map_helper.dart';
 import 'package:territory_capture/features/territory/domain/entities/territory_entity.dart';
 import 'package:territory_capture/features/territory/presentation/widgets/territory_details_card.dart';
 
-import '../../../../core/components/core_components.dart';
+import '../../../../core/components/custom_appbar.dart';
+import '../../../../core/theme/app_color_scheme.dart';
 
 class TerritoryDetailsPage extends StatefulWidget {
   const TerritoryDetailsPage({super.key});
@@ -30,8 +31,8 @@ class _TerritoryDetailsPageState extends State<TerritoryDetailsPage> {
       polygonId: const PolygonId("territory_polygon"),
       points: closedPolygon,
       strokeWidth: 3,
-      strokeColor: Colors.blue,
-      fillColor: Colors.blue.withOpacity(0.3),
+      strokeColor: AppColorScheme.polygonFill,
+      fillColor: AppColorScheme.polygonFill.withValues(alpha: 0.3),
     );
 
     return Scaffold(

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:territory_capture/core/extension/common.dart';
 import 'package:territory_capture/routes/app_routes.dart';
 
 class SplashPage extends StatefulWidget {
@@ -31,11 +32,15 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      backgroundColor: context.onPrimary,
       body: Center(
-        child: Text(
-          "Hello",
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        child:  Text(
+          "TERRITORY CAPTURE",
+          style: context.headlineMedium?.copyWith(
+            color: context.onPrimary,
+            fontWeight: FontWeight.w800,
+          ),
         ),
       ),
     );

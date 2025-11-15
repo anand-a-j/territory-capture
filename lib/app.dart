@@ -1,6 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:territory_capture/core/constants/app_constants.dart';
+import 'package:territory_capture/core/theme/app_theme.dart';
 
 import 'routes/app_pages.dart';
 import 'routes/app_routes.dart';
@@ -11,10 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
+      title: AppConsts.appName,
+      theme: AppThemes.lightThemeData(context),
       initialRoute: AppRoutes.splash,
       getPages: AppPages.pages,
     );
