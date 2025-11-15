@@ -12,7 +12,20 @@
           "package_name": "com.territorycapture.app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1036551375610-i8p5nfhhgugd6n3qcukgnbbqcpbt20e5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.territorycapture.app",
+            "certificate_hash": "1ddc9cded343242b347990a33d8aadcc1b4b30a1"
+          }
+        },
+        {
+          "client_id": "1036551375610-90g4ph8rdnn6i1pnfla1il242djhpdng.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCn7PkpxhLwrKiDkNQfqnivFT0SAIm6Gvw"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1036551375610-90g4ph8rdnn6i1pnfla1il242djhpdng.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

@@ -1,4 +1,16 @@
-class FirebaseAuthExeption implements Exception {
+class AuthExeption implements Exception {
   final String message;
-  FirebaseAuthExeption([this.message = "Authentication error"]);
+  AuthExeption([this.message = "Authentication error"]);
+
+  @override
+  String toString() => message;
+}
+
+class DatabaseException implements Exception {
+  final String message;
+
+  DatabaseException([this.message = "Database Server Error"]);
+
+  @override
+  String toString() => message;
 }
