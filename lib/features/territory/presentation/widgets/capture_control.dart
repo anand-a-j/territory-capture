@@ -49,7 +49,6 @@ class CaptureControl extends StatelessWidget {
               ],
             ),
 
-            // --------------------------------------------------
             TerritoryStatus.recording => Row(
               key: const ValueKey("recording"),
               children: [
@@ -81,7 +80,6 @@ class CaptureControl extends StatelessWidget {
               ],
             ),
 
-            // --------------------------------------------------
             TerritoryStatus.paused => Row(
               key: const ValueKey("paused"),
               children: [

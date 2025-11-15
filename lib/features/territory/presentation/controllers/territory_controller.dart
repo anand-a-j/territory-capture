@@ -1,20 +1,15 @@
 import 'package:get/get.dart';
+import 'package:territory_capture/core/utils/app_snackbar.dart';
 
 import '../../domain/entities/territory_entity.dart';
-import '../../domain/usercases/delete_territory_usecase.dart';
 import '../../domain/usercases/get_user_territories_usecase.dart';
 import '../../domain/usercases/save_territory_usecase.dart';
 
 class TerritoryController extends GetxController {
   final SaveTerritoryUseCase saveUseCase;
   final GetUserTerritoriesUseCase getUseCase;
-  final DeleteTerritoryUseCase deleteUseCase;
 
-  TerritoryController({
-    required this.saveUseCase,
-    required this.getUseCase,
-    required this.deleteUseCase,
-  });
+  TerritoryController({required this.saveUseCase, required this.getUseCase});
 
   final RxBool isLoading = false.obs;
   final RxBool isDeleting = false.obs;
@@ -36,7 +31,7 @@ class TerritoryController extends GetxController {
         errorMessage.value = failure.message;
       },
       (list) {
-        errorMessage.value = ""; 
+        errorMessage.value = "";
         territories.assignAll(list);
       },
     );
@@ -51,28 +46,10 @@ class TerritoryController extends GetxController {
 
     result.fold(
       (failure) {
-        Get.snackbar("Error", failure.message);
+        AppSnackBar.error("Error", failure.message);
       },
       (_) {
-        Get.snackbar("Success", "Territory saved!");
-      },
-    );
-  }
-
-  Future<void> deleteTerritory(String territoryId, String userId) async {
-    isDeleting.value = true;
-
-    final result = await deleteUseCase(territoryId);
-
-    isDeleting.value = false;
-
-    result.fold(
-      (failure) {
-        Get.snackbar("Error", failure.message);
-      },
-      (_) {
-        territories.removeWhere((t) => t.id == territoryId);
-        Get.snackbar("Deleted", "Territory removed");
+        AppSnackBar.info("Success", "Territory saved!");
       },
     );
   }

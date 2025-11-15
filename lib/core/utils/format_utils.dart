@@ -6,13 +6,15 @@ class FormatUtils {
     return "${(meters / 1000).toStringAsFixed(2)} km";
   }
 
-  static String formatArea(double? sqMeters) {
+ static String formatArea(double? sqMeters) {
     if (sqMeters == null) return "-";
 
     if (sqMeters < 10000) {
       return "${sqMeters.toStringAsFixed(1)} m²";
     }
-    return "${(sqMeters / 1000000).toStringAsFixed(2)} km²";
+
+    double sqKm = sqMeters / 1_000_000;
+    return "${sqKm.toStringAsFixed(2)} km²";
   }
 
   static String formatDate(DateTime date) {

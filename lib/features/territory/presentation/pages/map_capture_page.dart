@@ -54,8 +54,8 @@ class MapCapturePage extends StatelessWidget {
 
           return GoogleMap(
             initialCameraPosition: const CameraPosition(
-              target: LatLng(20.5937, 78.9629),
-              zoom: 16,
+              target: LatLng(11.0168, 76.9558),
+              zoom: 14,
             ),
             myLocationEnabled: true,
             myLocationButtonEnabled: true,
@@ -66,7 +66,7 @@ class MapCapturePage extends StatelessWidget {
             },
           );
         }),
-      
+
         bottomNavigationBar: CaptureControl(),
       ),
     );

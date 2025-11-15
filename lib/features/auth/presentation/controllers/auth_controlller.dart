@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:territory_capture/core/utils/app_snackbar.dart';
 import 'package:territory_capture/features/auth/domain/usecases/google_sign_in_usecase.dart';
 import 'package:territory_capture/features/auth/domain/usecases/sign_out_usecase.dart';
 
@@ -23,9 +24,9 @@ class AuthController extends GetxController {
 
     isLoading.value = false;
 
-     result.fold(
+    result.fold(
       (failure) {
-        Get.snackbar("Error", failure.message);
+        AppSnackBar.error("Error", failure.message);
       },
       (user) {
         Get.offNamed(AppRoutes.mapCapture);
@@ -42,7 +43,7 @@ class AuthController extends GetxController {
 
     result.fold(
       (failure) {
-        Get.snackbar("Error", failure.message);
+        AppSnackBar.error("Error", failure.message);
       },
       (user) {
         Get.offNamed(AppRoutes.signIn);

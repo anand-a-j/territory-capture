@@ -43,16 +43,4 @@ class TerritoryRepositoryImpl implements TerritoryRepository {
       return Left(Failure("Unexpected error while loading territories"));
     }
   }
-
-  @override
-  Future<Either<Failure, void>> deleteTerritory(String territoryId) async {
-    try {
-      await remote.deleteTerritory(territoryId);
-      return const Right(null);
-    } on DatabaseException catch (e) {
-      return Left(Failure(e.message));
-    } catch (_) {
-      return Left(Failure("Unexpected error while deleting territory"));
-    }
-  }
 }

@@ -47,12 +47,13 @@ class TerritoryCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    "${territory.points.length} Points",
-                    style: context.bodyMedium?.copyWith(
-                      color: context.secondary.withValues(alpha: 0.6),
-                    ),
-                  ),
+                  const SizedBox.shrink(),
+                  // Text(
+                  //   "${territory.points.length} Points",
+                  //   style: context.bodyMedium?.copyWith(
+                  //     color: context.secondary.withValues(alpha: 0.6),
+                  //   ),
+                  // ),
                   Icon(Icons.arrow_outward, color: context.secondary),
                 ],
               ),

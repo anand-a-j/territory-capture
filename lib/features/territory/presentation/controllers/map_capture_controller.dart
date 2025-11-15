@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:territory_capture/core/utils/app_snackbar.dart';
 import 'package:territory_capture/features/territory/domain/entities/territory_entity.dart';
 import 'package:geodesy/geodesy.dart' as geo;
 import 'package:territory_capture/features/territory/domain/usercases/get_position_usecase.dart';
@@ -48,22 +49,25 @@ class MapCaptureController extends GetxController {
         break;
 
       case LocationPermissionStatus.serviceDisabled:
-        Get.snackbar("Location Off", "Please turn on GPS.");
+        AppSnackBar.error("Location Off", "Please turn on GPS.");
         return;
 
       case LocationPermissionStatus.denied:
-        Get.snackbar("Permission Denied", "Please allow location permission.");
+        AppSnackBar.error(
+          "Permission Denied",
+          "Please allow location permission.",
+        );
         return;
 
       case LocationPermissionStatus.deniedForever:
-        Get.snackbar(
+        AppSnackBar.error(
           "Permission Blocked",
           "Location permission permanently denied. Enable it from Settings.",
         );
         return;
 
       case LocationPermissionStatus.error:
-        Get.snackbar("Error", "Unable to check location permission.");
+        AppSnackBar.error("Error", "Unable to check location permission.");
         return;
     }
 
@@ -73,10 +77,9 @@ class MapCaptureController extends GetxController {
 
     final result = await getPositionStreamUseCase();
 
-
     result.fold(
       (failure) {
-        Get.snackbar("Error", failure.message);
+        AppSnackBar.error("Error", failure.message);
       },
       (stream) {
         _positionSub = stream.listen(
@@ -106,13 +109,11 @@ class MapCaptureController extends GetxController {
           },
           onError: (e) {
             debugPrint("GPS Stream Error: $e");
-            Get.snackbar("Error", "Failed to get location updates.");
+            AppSnackBar.error("Error", "Failed to get location updates");
           },
         );
       },
     );
-
-  
   }
 
   void pauseRecording() {
@@ -151,7 +152,7 @@ class MapCaptureController extends GetxController {
           .map((p) => geo.LatLng(p.latitude, p.longitude))
           .toList();
 
-      area = geo.PolygonArea.calculatePolygonArea(geoPoints).abs();
+      area = geo.PolygonArea.calculatePolygonArea(geoPoints);
     }
 
     await _positionSub?.cancel();
@@ -203,41 +204,3 @@ class MapCaptureController extends GetxController {
     super.onClose();
   }
 }
-
-
-  // _positionSub =
-    //     Geolocator.getPositionStream(
-    //       locationSettings: const LocationSettings(
-    //         accuracy: LocationAccuracy.high,
-    //         distanceFilter: 3,
-    //       ),
-    //     ).listen(
-    //       (pos) {
-    //         if (status.value != TerritoryStatus.recording) return;
-
-    //         final point = LatLng(pos.latitude, pos.longitude);
-
-    //         if (mapController != null) {
-    //           Future.microtask(() {
-    //             mapController!.animateCamera(CameraUpdate.newLatLng(point));
-    //           });
-    //         }
-
-    //         if (points.isNotEmpty) {
-    //           final last = points.last;
-    //           final seg = Geolocator.distanceBetween(
-    //             last.latitude,
-    //             last.longitude,
-    //             point.latitude,
-    //             point.longitude,
-    //           );
-    //           distanceMeters.value += seg;
-    //         }
-
-    //         points.add(point);
-    //       },
-    //       onError: (e) {
-    //         debugPrint("GPS Stream Error: $e");
-    //         Get.snackbar("Error", "Failed to get location updates.");
-    //       },
-    //     );

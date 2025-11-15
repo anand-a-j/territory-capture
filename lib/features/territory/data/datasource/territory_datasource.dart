@@ -9,9 +9,17 @@ class TerritoryRemoteDataSource {
 
   Future<void> saveTerritory(TerritoryDTO dto) async {
     try {
+
+      if (dto.userId.isEmpty) {
+        throw DatabaseException("User not logged in");
+      }
+
+      final data = dto.toJson();
+      data['userId'] = dto.userId;
+
       final docRef = firestore.collection('territories').doc(dto.id);
 
-      await docRef.set(dto.toJson());
+      await docRef.set(data);
     } catch (e) {
       debugPrint("saveTerritory ERROR: $e");
       throw DatabaseException("Failed to save territory");

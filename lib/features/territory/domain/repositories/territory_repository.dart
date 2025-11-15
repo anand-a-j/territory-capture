@@ -9,6 +9,4 @@ abstract class TerritoryRepository {
   Future<Either<Failure, List<TerritoryEntity>>> getUserTerritories(
     String userId,
   );
-  
-  Future<Either<Failure, void>>  deleteTerritory(String territoryId);
 }

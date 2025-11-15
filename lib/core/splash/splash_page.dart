@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:territory_capture/core/constants/app_constants.dart';
 import 'package:territory_capture/core/extension/common.dart';
 import 'package:territory_capture/routes/app_routes.dart';
 
@@ -33,13 +34,16 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: context.onPrimary,
+      backgroundColor: context.primary,
       body: Center(
-        child:  Text(
-          "TERRITORY CAPTURE",
-          style: context.headlineMedium?.copyWith(
-            color: context.onPrimary,
-            fontWeight: FontWeight.w800,
+        child:  Padding(
+          padding: const EdgeInsets.all(AppConsts.pSide),
+          child: Text(
+            "TERRITORY CAPTURE",
+            style: context.headlineMedium?.copyWith(
+              color: context.onPrimary,
+              fontWeight: FontWeight.w800,
+            ),
           ),
         ),
       ),
