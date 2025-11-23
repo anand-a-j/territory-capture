@@ -4,6 +4,14 @@ A Flutter application for recording GPS paths, generating polygons, calculating 
 
 This project demonstrates industry-standard architecture, real-time location tracking, Firestore security, and professional coding practices.
 
+## 📱 App Preview
+
+<div align="center">
+  <img src="assets/screenshots/screen1.jpg" width="250" />
+  <img src="assets/screenshots/screen2.jpg" width="250" />
+  <img src="assets/screenshots/screen3.jpg" width="250" />
+</div>
+
 ## Features
 
 - Live GPS tracking (1–3 meters accuracy)

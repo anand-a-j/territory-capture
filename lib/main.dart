@@ -7,3 +7,22 @@ void main() async {
   await Firebase.initializeApp();
   runApp(const MyApp());
 }
+
+
+// With shorthands
+Row(
+  mainAxisAlignment: .spaceBetween,
+  crossAxisAlignment: .center,
+)
+
+// Without shorthands
+Row(
+  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  crossAxisAlignment: CrossAxisAlignment.center,
+)
+
+// With shorthands
+final mode = .dark;
+
+// Without shorthands
+final mode = Brightness.dark;
